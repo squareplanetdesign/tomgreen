@@ -9,11 +9,13 @@
     "Lifting"
   ],
   "companies" : [
-    "@cpanel",
-    "@squareplanetdesign",
-    "@ecommlink",
-    "@sperrydrilling",
-    "@txinstruments"
+    "cPanel, Inc - @cpanel",
+    "Square Planet Design - @squareplanetdesign",
+    "eCommLink, Inc - @ecommlink",
+    "Mannin Corp",
+    "Sperry-Sun Drilling Services - @sperrydrilling",
+    "Key Corp",
+    "Texas Instruments - @txinstruments"
   ],
   "links": [
     {
@@ -26,11 +28,11 @@
     },
     {
         "type": "twitter",
-        "url": "@tomgreen98"
+        "url": "https://twitter.com/tomgreen98"
     },
     {
         "type": "twitter",
-        "url": "@cpaneltomg"
+        "url": "https://twitter.com/cpaneltomg"
     }
   ],
   "technology" : [
@@ -60,6 +62,6 @@
     "Self Starter"
   ],
   "titles" : [
-    "Hardcore full-stack developer with a streak of leadership and managment mixed in."
+    "Hardcore full-stack developer with a streak of leadership and management mixed in for good measure."
   ]
 }

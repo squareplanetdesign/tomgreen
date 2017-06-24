@@ -1,5 +1,4 @@
 <div>
-    <label>Name</label>
     <span>{{name}}</span>
     {{#each titles}}
         <div>{{this}}</div>
