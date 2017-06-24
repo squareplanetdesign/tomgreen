@@ -1,0 +1,65 @@
+{
+  "name": "Tom Green",
+  "priorities" : [
+    "Friends",
+    "Cats",
+    "Gardening",
+    "Technology",
+    "Home Automation",
+    "Lifting"
+  ],
+  "companies" : [
+    "@cpanel",
+    "@squareplanetdesign",
+    "@ecommlink",
+    "@sperrydrilling",
+    "@txinstruments"
+  ],
+  "links": [
+    {
+        "type": "linkedin",
+        "url": "https://www.linkedin.com/in/thomasgreenfullstackdev/"
+    },
+    {
+        "type": "github",
+        "url": "https://github.com/squareplanetdesign"
+    },
+    {
+        "type": "twitter",
+        "url": "@tomgreen98"
+    },
+    {
+        "type": "twitter",
+        "url": "@cpaneltomg"
+    }
+  ],
+  "technology" : [
+    "angularjs",
+    "Perl",
+    "JavaScript",
+    "HTML 5",
+    "Less",
+    "PHP",
+    "jQuery",
+    "MySQL",
+    "nodejs",
+    "UX",
+    "UI Design",
+    "MVC",
+    "OO",
+    "Patterns",
+    "C++",
+    "C#",
+    "Template Toolkit"
+  ],
+  "softskills" : [
+    "Product Owner",
+    "Technical Manager",
+    "Code Reviewer",
+    "Polyglot",
+    "Self Starter"
+  ],
+  "titles" : [
+    "Hardcore full-stack developer with a streak of leadership and managment mixed in."
+  ]
+}
