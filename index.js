@@ -27,6 +27,7 @@ program
 
 if (program.animation) {
     animateName(data, program, function() {
+        clear();
         printBio(data, program);
         process.exit();
     });
