@@ -1,6 +1,6 @@
 {
   "name": "tomgreen",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "The Node Business Card of Tom Green",
   "main": "index.js",
   "scripts": {
