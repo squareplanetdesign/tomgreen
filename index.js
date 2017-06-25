@@ -15,7 +15,6 @@ program
   .version('1.0.0')
   .description('Prints out my professional contact card in different formats.')
   .option('--no-color',     'Suppress color output')
-  .option('--debug',        'Output debugging information')
   .option('--json',         'Output json')
   .option('--html',         'Output html')
   .option('--text',         'Output text (default)')
