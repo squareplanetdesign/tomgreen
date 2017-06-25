@@ -3,6 +3,11 @@
     {{#each titles}}
         <div>{{this}}</div>
     {{/each}}
+    <ul>
+    {{#each soundbytes}}
+        <li>{{this}}</li>
+    {{/each}}
+    </ul>
 </div>
 
 <div>

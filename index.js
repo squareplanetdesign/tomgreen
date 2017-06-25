@@ -6,46 +6,65 @@ const chalk      = require('chalk');
 const clear      = require('clear');
 const figlet     = require('figlet');
 const fs         = require('fs');
-const handlebars = require('handlebars');
+const Handlebars = require('handlebars');
+const CliFrames = require("cli-frames");
 
 var data = JSON.parse(fs.readFileSync('me.json', 'utf8'));
 
 program
   .version('1.0.0')
   .description('Prints out my professional contact card in different formats.')
-  .option('--no-color', 'Suppress color output')
-  .option('--json',     'Output json')
-  .option('--html',     'Output html')
-  .option('--text',     'Output text (default)')
+  .option('--no-color',     'Suppress color output')
+  .option('--debug',        'Output debugging information')
+  .option('--json',         'Output json')
+  .option('--html',         'Output html')
+  .option('--text',         'Output text (default)')
+  .option('--no-animation', 'Suppress the animation')
   .on('json', () => { program.outputType = 'json'} )
   .on('html', () => { program.outputType = 'html'} )
   .on('text', () => { program.outputType = 'text'} )
   .parse(process.argv);
 
-//clear();
-var document;
-switch(program.outputType) {
-    case "json":
-        document = toJson(data, program);
-        break;
-    case "html":
-        document = toHtml(data, program);
-        break;
-    case "text":
-        document = toText(data, program);
-        break;
-    default:
-        if(typeof(program.type) !== 'undefined') {
-            process.stdout.write("Unrecognized type, use one of: --json, --html, --text");
-            process.exit();
-        } else {
-            document = toText(data, program);
-        }
+if (program.animation) {
+    animateName(data, program, function() {
+        printBio(data, program);
+        process.exit();
+    });
+} else {
+    printBio(data, program);
+    process.exit();
 }
 
-process.stdout.write(document);
-process.exit();
+/**
+ * Prints out the bio information
+ *
+ * @method printBio
+ * @param  {Object} data Contact data
+ * @param  {Object} opts cli options
+ */
+function printBio(data, opts) {
+    var document;
+    switch(opts.outputType) {
+        case "json":
+            document = toJson(data, opts);
+            break;
+        case "html":
+            document = toHtml(data, opts);
+            break;
+        case "text":
+            document = toText(data, opts);
+            break;
+        default:
+            if(typeof(opts.type) !== 'undefined') {
+                process.stdout.write("Unrecognized type, use one of: --json, --html, --text");
+                process.exit();
+            } else {
+                document = toText(data, opts);
+            }
+    }
 
+    process.stdout.write(document);
+}
 /**
  * Factory method to generate a handlebars helper function
  * that chunks groups of n items separated by the join
@@ -73,6 +92,7 @@ function chunkerFactory(chunk, join) {
  *
  * @method toJson
  * @param  {Object} data Contact data
+ * @param  {Object} opts cli options
  * @return {String} formatted document
  */
 function toJson(data, opts) {
@@ -84,13 +104,14 @@ function toJson(data, opts) {
  *
  * @method toText
  * @param  {Object} data Contact data
+ * @param  {Object} opts cli options
  * @return {String} formatted document
  */
 function toText(data, opts) {
-    handlebars.registerHelper('each5', chunkerFactory(5, ', '));
-    handlebars.registerHelper('each10', chunkerFactory(10, ', '));
+    Handlebars.registerHelper('each5', chunkerFactory(5, ', '));
+    Handlebars.registerHelper('each10', chunkerFactory(10, ', '));
 
-    var template = handlebars.compile(
+    var template = Handlebars.compile(
         fs.readFileSync('me.txt.hb', 'utf8')
     );
 
@@ -107,13 +128,48 @@ function toText(data, opts) {
  *
  * @method toHtml
  * @param  {Object} data Contact data
+ * @param  {Object} opts cli options
  * @return {String} formatted document
  */
 function toHtml(data, opts) {
-    var template = handlebars.compile(
+    var template = Handlebars.compile(
         fs.readFileSync('me.html.hb', 'utf8')
     );
 
     var doc = template(data);
     return doc + "\n";
 }
+
+/**
+ * Animate the name at startup.
+ *
+ * @method animateName
+ * @param {Object} data Contact data
+ * @param {Object} opts cli options
+ * @param {Function} [callback] callback function to run after the animation.
+ */
+function animateName(data, opts, callback) {
+    var frames = [];
+    for(var n = 0, l = data.name.length; n < l; n++) {
+        var name = data.name.substr(0, n);
+        var title = figlet.textSync(name, { horizontalLayout: 'full' });
+        if (opts.color) {
+            title = chalk.green(title);
+        }
+        frames.push(title);
+    }
+
+    var rules = {
+        frames: frames,
+        autostart: {
+            delay: 150
+        }
+    };
+
+    if (callback) {
+        rules.autostart.end = callback;
+    }
+
+    new CliFrames(rules);
+}
+

@@ -3,6 +3,10 @@
 {{this}}
 {{/each}}
 
+{{#each soundbytes}}
+    * {{this}}
+{{/each}}
+
 Companies where I've worked:
 {{#each companies}}
   {{this}}

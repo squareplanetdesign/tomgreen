@@ -10,7 +10,7 @@
   ],
   "companies" : [
     "cPanel, Inc - @cpanel",
-    "Square Planet Design - @squareplanetdesign",
+    "Square Planet Design",
     "eCommLink, Inc - @ecommlink",
     "Mannin Corp",
     "Sperry-Sun Drilling Services - @sperrydrilling",
@@ -55,13 +55,20 @@
     "Template Toolkit"
   ],
   "softskills" : [
-    "Product Owner",
-    "Technical Manager",
-    "Code Reviewer",
     "Polyglot",
-    "Self Starter"
+    "Self Starter",
+    "Greenfield Developer",
+    "Brownfield Developer",
+    "Code Reviewer",
+    "Product Owner",
+    "Hands On Technical Manager"
   ],
   "titles" : [
     "Hardcore full-stack developer with a streak of leadership and management mixed in for good measure."
+  ],
+  "soundbytes": [
+    "Developer since my early teens.",
+    "21 years of development experience.",
+    "Automating my home with IOT one light bulb at a time."
   ]
 }
